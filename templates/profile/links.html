@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+    <div class="center-container">
+        {% if user_links %}
+            <h3>Ссылки:</h3>
+            {% for user_link in user_links %}
+                <a class="form-link" alt="{{user_link.fields.full_url}}" href="{{user_link.fields.full_url}}">{{user_link.fields.cut_url}}</a>
+            {% endfor %}
+        {% else %}
+            <h3>Вы не создали еще не одной ссылки, создайте первую</h3>
+        {% endif %}
+        <h3>Создание новой сокращенной ссылки:</h3>
+        <form method="post">
+            {% csrf_token %}
+            <label class="form-label">Длинная ссылка:</label>
+            <input type="text" minlength="1" name="full_url" maxlength="255" placeholder="Введите полный URL..." onkeyup="get_length(this, 'full_url')" value="{{full_url}}">
+            <small class="text-form muted">Ограничение на количество символов 255. Введено <div id="full_url" style="display: inline-block;">0</div></small>
+            <label class="form-label">Сокращенная ссылка:</label>
+            <input type="text" minlength="1" name="cut_url" maxlength="30" placeholder="Сокращенный URL..." onkeyup="get_length(this, 'cut_url')">
+            <small class="text-form muted">Ограничение на количество символов 30. Введено <div id="cut_url" style="display: inline-block;">0</div></small>
+            {% if errors %}
+                <small class="text-form danger" style="display: block;">{{errors}}</small>
+            {% endif %}
+            <button class="btn-rounded">Создать ссылку</button>
+        </form>
+    </div>
+    <script>
+        function get_length(input, small_id){
+            let value = input.value;
+            document.getElementById(small_id).innerHTML = value.length
+        }
+    </script>
+{% endblock %}

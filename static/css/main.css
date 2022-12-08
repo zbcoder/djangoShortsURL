@@ -59,6 +59,8 @@ input:hover {
 }
 
 .btn-rounded{
+    margin-top: 10px;
+    display: block;
     padding: 10px 20px;
     font-size: large;
     background-color: #ffd44d;
@@ -146,10 +148,7 @@ input:hover {
 
 .center-container{
     position: relative;
-    border: .5px solid #999;
-    width: calc(var(--index)*25);
-    height: calc(var(--index)*15);
-    border-radius: calc(var(--index)*5);
+    width:50%;
     margin-left: auto;
     margin-right: auto;
     padding: calc(var(--index)*.5);
@@ -157,4 +156,10 @@ input:hover {
 
 .center-header{
     text-align: center;
+}
+
+.form-link{
+    display: block;
+    font-size: larger;
+    margin-bottom: .5em;
 }
