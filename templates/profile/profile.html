@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}
+{{title}}
+{% endblock %}
+{% block content %}
+    
+    <h1 class="center-header">Кабинет пользователя</h1>
+    <h3 class="center-header">@{{user}}</h3>
+    <h3 class="center-header">Email: {{user.email}}</h3>
+
+{% endblock %}

@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+    <nav class="shorturls-navbar">
+
+    </nav>
+    
+    <div class="container">
+        {% if messages %}
+          {% for mess in messages %}
+            <div class="alert alert-success">{{ mess }}</div>
+          {% endfor %}
+        {% endif %}
+        {% block content %}
+        
+        {% endblock %}
+    </div>
+    <div class="footer">
+      <div class="footer-content">
+          Все права защищены &#169;
+          <div class="footer-buttons-container">
+            <a href="https://facebook.com" class="fa fa-facebook"></a>
+            <a href="" class="fa fa-instagram"></a>
+            <a href="https://vk.com" class="fa fa-vk"></a>
+            <a href="https://twitter.com" class="fa fa-twitter"></a>
+        </div>
+      </div>
+    </div>
 </body>
 </html>

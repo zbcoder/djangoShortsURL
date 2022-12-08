@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'djangoAuth'
+    'djangoAuth',
+    'djangoMain'
 ]
 
 MIDDLEWARE = [
@@ -78,12 +80,8 @@ WSGI_APPLICATION = 'djangoShortLinks.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'djangoShortUrls',
-        'USER': 'djangoShortUrlsAdmin',
-        'PASSWORD': 'djangourls',
-        'HOST': '94.190.71.245',
-        'PORT': '5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -110,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
@@ -129,5 +127,7 @@ STATICFILES_DIRS = [
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+LOGIN_REDIRECT_URL = 'myprofile'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

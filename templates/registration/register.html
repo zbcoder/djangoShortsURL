@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{title}}
+{% endblock %}
+{% block content %}
+    
+    <div class="form">
+        <form method="post" class="form-register">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                {{ error }}
+            {% endfor %}
+        {% endif %}
+
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        {% for field in form %}
+            <label class="form-label">{{field.label_tag}}</label>
+            {{field}}
+            <small class="form-text danger">{{ field.errors.as_ul }}</small>
+            <small class="form-text muted">{{field.help_text}}</small>
+        {% endfor %}
+        <button class="btn-rounded" type="submit">Зарегистрироваться</button>
+        </form>
+    </div>
+{% endblock %}

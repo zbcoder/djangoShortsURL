@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form">
+    <form action="" method="POST">
+        <div class="auth-container">
+            <div class="auth-img"></div>
+    
+            {% if next %}
+            {% if user.is_authenticated %}
+                <small class="form-text muted">Your account doesn't have access to this page. To proceed,
+                    please login with an account that has access.</small>
+                </div>
+            {% else %}
+                <small style="color:crimson;" class="text-center">Please login to see this page.</small>
+            {% endif %}
+            {% endif %}
+            <label class="form-label">{{ form.username.label_tag }}</label>
+            {{ form.username }}
+            <div class="auth-label">{{ form.password.label_tag }}</div>
+            {{ form.password }}
+            {% if form.errors %}
+                <small class="form-text danger">Логин или пароль введены неправильно, попробуйте еще раз</small>
+            {% endif %}
+            <small class="form-text muted">Если у вас еще нет аккаунта, вы можете <a href="{% url 'register' %}">создать</a> его</small>
+            
+            <button class="btn-rounded" type="submit">Авторизоваться</button>
+            <input type="hidden" name="next" value="{{ next }}">
+            
+        </div>
+       
+        {% csrf_token %}
+    </form>
+</div>
+{% endblock %}
