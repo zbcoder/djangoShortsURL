@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'sapr_statiya.urls'
+ROOT_URLCONF = 'djangoShortLinks.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'sapr_statiya.wsgi.application'
+WSGI_APPLICATION = 'djangoShortLinks.wsgi.application'
 
 
 # Database
