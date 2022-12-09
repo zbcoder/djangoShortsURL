@@ -3,6 +3,13 @@
     {{title}}
 {% endblock %}
 {% block content %}
+    {% if user.is_authenticated %}
+    <div class="center-container">
+        <h1 style="text-align:center;" style="font-size: 30px">В данный момент вы авторизованы в системе. 
+            Для регистрации пользователя вам необходимо совершить одно из следующих действий: <a href="{% url 'home' %}" style="style=font-size: 30px; text-decoration: none; color: rgb(255,86,68);">вернуться</a>
+            на главную страницу или <a href="{% url 'logout' %}" style="style=font-size: 30px; text-decoration: none;" class="danger"> выйти из системы</a></h1>
+    </div>
+    {% else %}
     <div class="center-container">
         <h2>Регистрация в сервисе</h2>
         <div class="form">
@@ -32,4 +39,5 @@
             </form>
         </div>
     </div>
+    {% endif %}
 {% endblock %}

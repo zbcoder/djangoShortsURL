@@ -212,6 +212,7 @@ input:hover {
     display: block;
     font-size: larger;
     margin-bottom: .5em;
+    color: rgb(255,86,68);
 }
 .alert-success{
     width:100%;
@@ -221,4 +222,13 @@ input:hover {
 
 .header-large{
     font-size: calc(var(--index)*5);
+}
+
+.disabled{
+    opacity: .7;
+    pointer-events: none;
+}
+
+.hidden{
+    visibility: hidden;
 }

@@ -32,7 +32,9 @@ def create_link(request):
     else:
         full_url = request.POST.get('full_url')
         cut_url = request.POST.get('cut_url')
-        print(request.user.id)
+        if cut_url[-1]=='/':
+            cut_url = cut_url[1: -1]
+        print(request.user.id, cut_url)
         data = json.loads(serializers.serialize('json', Links.objects.filter(user_id = request.user.id)))
         try:
             for record in data:
@@ -51,6 +53,10 @@ def create_link(request):
 
 
 def home(request):
-    return render(request, 'profile/home.html', context={'title':'Главная'})
+    return render(request, 'common_templates/home.html', context={'title':'Главная'})
+
+
+def about(request):
+    return render(request, 'common_templates/about.html', context={'title': 'Про нас'})
         
     

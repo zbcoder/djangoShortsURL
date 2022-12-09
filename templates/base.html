@@ -14,15 +14,16 @@
         <ul class="ul-navbar">
           <div class="navbar-container">
             <li class="link-navbar" style="float: left;"><a href="" class="link-navbar__link navbar-header"><img src="{% static 'svg/Logo.svg' %}" width="80" height="80"></img></a></li>
+            <li class="link-navbar" style="float: left; margin-top:15px;"><a href="" class="link-navbar__link navbar-header" style="font-size: 30px;">Сократим ваши ссылки</a></li>
             {% if user.is_authenticated %}
                 <li class="link-navbar"><a href="{% url 'logout' %}" class="link-navbar__link">Выйти</a></li>
-                <li class="link-navbar"><a href="{% url 'logout' %}" class="link-navbar__link">Про нас</a></li>
                 <li class="link-navbar"><a href="{% url 'create_link' %}" class="link-navbar__link">Создание ссылок</a></li>
                 <li class="link-navbar"><a href="{% url 'profile' %}" class="link-navbar__link">Перейти в профиль</a></li>
             {% else %}
                 <li class="link-navbar"><a href="{% url 'login' %}" class="link-navbar__link">Войти</a></li>
                 <li class="link-navbar"><a href="{% url 'register' %}" class="link-navbar__link">Зарегистрироваться</a></li>
             {% endif %}
+            <li class="link-navbar"><a href="{% url 'about' %}" class="link-navbar__link">Про нас</a></li>
             <li class="link-navbar"><a href="{% url 'home' %}" class="link-navbar__link">Главная</a></li>
           </div>
         </ul>
