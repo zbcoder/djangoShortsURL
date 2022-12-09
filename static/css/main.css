@@ -209,6 +209,7 @@ input:hover {
 }
 
 .form-link{
+    width: max-content;
     display: block;
     font-size: larger;
     margin-bottom: .5em;
