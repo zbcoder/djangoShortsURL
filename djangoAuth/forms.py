@@ -12,7 +12,7 @@ class NewUserForm(UserCreationForm):
     username = forms.CharField(
         label='Введите логин',
         required=True,
-        help_text='Нельзя вводить символы: @, /, _',
+        help_text='Нельзя вводить символы, кроме: @, /, _',
         widget=forms.TextInput(attrs={'placeholder': 'Введите логин'})
     )
 

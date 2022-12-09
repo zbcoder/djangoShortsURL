@@ -2,12 +2,25 @@ from django.shortcuts import render, redirect
 from .models import *
 import json
 from django.core import serializers
+from .forms import *
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 # Create your views here.
 
+@login_required
 def myprofile(request):
-    return render(request, 'profile/profile.html', context={'title': 'Личный кабинет'})
-
-
+    if request.method == 'GET':
+        form = CustomUserChangeForm()
+    else:
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Информация успешно изменена!')
+            return redirect('profile')
+    return render(request, 'profile/profile.html', context={'title': 'Личный кабинет', 'form': form})
+        
+    
+@login_required
 def create_link(request):
     qs = Links.objects.filter(user_id = request.user.id)
     data = serializers.serialize('json', qs)
@@ -35,6 +48,9 @@ def create_link(request):
             return redirect('create_link')
         except:
             pass
-            
+
+
+def home(request):
+    return render(request, 'profile/home.html', context={'title':'Главная'})
         
     

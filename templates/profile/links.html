@@ -6,6 +6,11 @@
 
 {% block content %}
     <div class="center-container">
+        {% if messages %}
+          {% for mess in messages %}
+            <div class="alert alert-success">{{ mess }}</div>
+          {% endfor %}
+        {% endif %}
         {% if user_links %}
             <h3>Ссылки:</h3>
             {% for user_link in user_links %}

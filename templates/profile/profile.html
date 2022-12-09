@@ -3,9 +3,31 @@
 {{title}}
 {% endblock %}
 {% block content %}
-    
-    <h1 class="center-header">Кабинет пользователя</h1>
-    <h3 class="center-header">@{{user}}</h3>
-    <h3 class="center-header">Email: {{user.email}}</h3>
+    <div class="center-container">
+        <h1 class="center-header">Кабинет пользователя</h1>
+        <h3 class="center-header">@{{user}}</h3>
+        <h3 class="center-header">Email: {{user.email}}</h3>
+        <button class="btn-rounded" style="margin-left:auto; margin-right:auto;"> <a href="{% url 'logout' %}" style="text-decoration: none; color: black;">Выйти</a></button>
 
+        {% if messages %}
+          {% for mess in messages %}
+            <div class="alert-success">{{ mess }}</div>
+          {% endfor %}
+        {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        <label class="form-label">{{form.username.label_tag}}</label>
+        <input type="text" name="username" value={{user.username}}>
+        <small class="form-text danger">{{ form.username.errors.as_ul }}</small>
+        <small class="form-text muted">{{field.username.help_text}}</small>
+
+        <label class="form-label">{{form.email.label_tag}}</label>
+        <input type="text" name="email" value={{user.email}}>
+        <small class="form-text danger">{{ form.email.errors.as_ul }}</small>
+        <small class="form-text muted">{{field.email.help_text}}</small>
+
+        <button class="btn-rounded">Изменить данные</button>
+    </form>
+        
+    </div>
 {% endblock %}
